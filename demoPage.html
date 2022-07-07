@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>pagePiling.js plugin</title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="pagePiling.js plugin by Alvaro Trigo." />
+	<meta name="keywords"  content="pile,piling,piling.js,stack,pages,scrolling,stacking,touch,fullpile,scroll,plugin,jquery" />
+	<meta name="Resource-type" content="Document" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400,700" />
+	<link rel="stylesheet" href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./jquery.pagepiling.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- select2 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+  <!-- select2-bootstrap4-theme -->
+  <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"> <!-- for live demo page -->
+  <link href="select2-bootstrap4.css" rel="stylesheet"> <!-- for local development env -->
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript" src="./jquery.pagepiling.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			/*
+			* Plugin intialization
+			*/
+	    	$('#pagepiling').pagepiling({
+	    		menu: '#menu',
+	    		anchors: ['page1', 'page2', 'page3', 'page4'],
+			    sectionsColor: ['white', '#ee005a', '#2C3E50', '#39C'],
+			    navigation: {
+			    	'position': 'right',
+			   		'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4']
+			   	},
+			    afterRender: function(){
+			    	$('#pp-nav').addClass('custom');
+			    },
+			    afterLoad: function(anchorLink, index){
+			    	if(index>1){
+			    		$('#pp-nav').removeClass('custom');
+			    	}else{
+			    		$('#pp-nav').addClass('custom');
+			    	}
+			    }
+			});
+
+
+			/*
+		    * Internal use of the demo website
+		    */
+		    $('#showExamples').click(function(e){
+				e.stopPropagation();
+				e.preventDefault();
+				$('#examplesList').toggle();
+			});
+
+			$('html').click(function(){
+				$('#examplesList').hide();
+			});
+	    });
+    </script>
+
+
+    <style>
+    /* Section 1
+	 * --------------------------------------- */
+	#section1 h1{
+		color: #444;
+	}
+	#section1 p{
+		color: #333;
+		color: rgba(0,0,0,0.3);
+	}
+	#section1 img{
+		margin: 20px 0;
+		opacity: 0.7;
+	}
+
+	/* Section 2
+	 * --------------------------------------- */
+	#section2 h1,
+	#section2 p{
+		z-index: 3;
+	}
+	#section2 p{
+		opacity: 0.8;
+	}
+
+	#section2 #colors{
+		right: 60px;
+		bottom: 0;
+		position: absolute;
+		height: 413px;
+		width: 258px;
+		background-image: url(imgs/colors.gif);
+		background-repeat: no-repeat;
+	}
+
+	/* Section 3
+	 * --------------------------------------- */
+	#section3 #colors{
+		left: 60px;
+		bottom: 0;
+	}
+	#section3 p{
+		color: #757575;
+	}
+
+	#colors2,
+	#colors3{
+		position: absolute;
+		height: 163px;
+		width: 362px;
+		z-index: 1;
+		background-repeat: no-repeat;
+		left: 0;
+		margin: 0 auto;
+		right: 0;
+	}
+	#colors2{
+		background-image: url(imgs/colors2.gif);
+		top:0;
+	}
+	#colors3{
+		background-image: url(imgs/colors3.gif);
+		bottom:0;
+	}
+
+	/* Section 4
+	 * --------------------------------------- */
+	#section4 p{
+		opacity: 0.6;
+	}
+
+	/* Overwriting fullPage.js tooltip color
+	* --------------------------------------- */
+	#pp-nav.custom .pp-tooltip{
+		color: #AAA;
+	}
+	#markup{
+		display: block;
+		width: 450px;
+		margin: 20px auto;
+		text-align: left;
+	}
+	@media  screen and (max-width:430px){
+	input {
+		font-size: 20px;}
+	
+	  button {
+		font-size: 20px;}
+	
+	.r_label{
+		font-size: 24px!important;
+	  }
+	input[type=text], .r_dropdown, input[type=email]{
+		font-size: 36px!important;
+	  }
+	 #r_sub-heading{
+		font-size: 24px!important;
+	  }
+	.r_font-20{
+		font-size: 24px!important;
+	}
+	  .rb-txt {
+		font-size: 24px!important;
+	  }
+	.r_payfield{
+		 font-size: 24px!important;
+	}
+	.r_payment{
+		font-size: 20px!important;
+	}
+	.rb-txt-checkbox {
+		font-size: 24px!important;
+	  }
+	  #regForm {
+		padding: 20px;
+		width: 95%!important;
+	}
+	.container.r_container  {
+		max-width: 100%!important;
+	}
+	.r_field{
+		width: 90%;
+	}
+	#r_sub-heading {
+		font-size: 18px!important;
+	}
+	#regForm {
+		width: 100%;
+	}
+	
+}
+@media screen and (max-width: 430px){
+.r_label {
+    font-size: 28px!important;
+}
+}
+</style>
+<link rel="stylesheet" type="text/css" href="./examples-1.css" />
+<link rel="stylesheet" type="text/css" href="./examples.css" />
+<link rel="stylesheet" href="./media.css">
+</head>
+<body>
+	<!-- <ul id="menu">
+		<li data-menuanchor="page1" class="active"><a href="#page1">Page 1</a></li>
+		<li data-menuanchor="page2"><a href="#page2">Page 2</a></li>
+		<li data-menuanchor="page3"><a href="#page3">Page 3</a></li>
+		<li data-menuanchor="page4"><a href="#page4">Page 4</a></li>
+	</ul> -->
+	<div class="r_scroll-btns" id="menu">
+		<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle r_fixed-btn-left"><i class="fas fa-chevron-up"></i></button>
+		<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle r_fixed-btn-right"><i class="fas fa-chevron-down"></i></button>
+	</div>
+
+
+	<div id="pagepiling">
+		<!--Step 1-->
+	    <div class="section pp-section" id="section1">
+			<div class="container r_container">
+                <form action="" id="regForm">
+                    <div class="from-group">
+                        <label class="r_label" for="name" style="@media screen and (max-width: 430px){font-size: 28px!important;}">
+                            <span class="r_series">1→   </span>Let's start with your <b>name.</b> *
+                        </label>
+                        <input class="r_field r_name-get" id="name" type="text" placeholder="Type your answer here...">
+                    </div>
+                    <div class="form-group">
+                        <!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+                        <button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+                    </div>
+                </form>
+            </div>
+		</div>
+		<!--Step 2-->
+	    <div class="section pp-section" id="section2">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">2→   </span><span class="r_name-post"></span> ,do let us know your mobile number. *
+							</label>
+							<h3 for="" id="r_sub-heading">
+								<br>Do provide a mobile that is WhatsApp enabled. this is so we can give you timely updates of your washers and for you to contact our customer success team
+							</h3>
+							
+							<div class="r_country-drop-down r_d-flex r_mt-40i">
+								<input name="phone" type="text" id="phone" data-live-search="true" />
+								<!-- <select name="" id="">
+									<option disabled>select country</option>
+    								<option value="AF" data-thumbnail="">Afghanistan</option>
+    								<option value="AX">Aland Islands</option>
+    								<option value="AL">Albania</option>
+								</select>
+								<input class="r_field" type="text" placeholder="Type your answer here..."> -->
+							</div>
+						</div>
+						<div class="form-group">
+							<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+							<button type="button" class="r_btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+						</div>
+					</form>
+					<!-- <div class="r_scroll-btns">
+						<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+						<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+					</div> -->
+				</div>
+	    	</div>
+	    </div>
+	    <div class="section pp-section" id="section3">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">3→   </span>What <b>email address</b> can we reach you at? *
+							</label>
+							<input class="r_field r_name-get" id="name" type="email" placeholder="Type your answer here...">
+						</div>
+						<div class="form-group">
+							<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+							<button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+			<!-- <div class="r_scroll-btns">
+				<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+				<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+			</div> -->
+	    </div>
+	    <div class="section pp-section" id="section4">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">4→   </span><span class="r_name-post"></span>, which of the following condos do you live in. *
+							</label>
+							<h3 for="" id="r_sub-heading">
+								<br>select one of the following options. If you cant find your condominium/residence, select ' i can't find my residence'
+							</h3>
+							<div class="custom-select">
+								<select class="r_dropdown" name="" id="">
+									<option value="" disabled selected class=" r_font-20 r_placeholder"> Select an option</option>
+									<option value="" class="r_font-20">8 riversuites</option>
+									<option value="" class="r_font-20">Casa Merah Condominium</option>
+									<option value="" class="r_font-20">Cityview @ boon keng</option>
+									<option value="" class="r_font-20">Maysprings condominium</option>
+									<option value="" class="r_font-20">The Vales</option>
+									</ul>
+								</select>
+							</div>
+
+							<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+							<button type="button" class="r_btn r_step-1-btn r_mt-40i" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+			<!-- <div class="r_scroll-btns">
+				<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+				<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+			</div> -->
+	    </div>
+		<div class="section pp-section" id="section5">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">5→   </span><span class="r_name-post"></span>, which block do you live in? *
+							</label>
+							<input class="r_field r_name-get" id="name" type="text" placeholder="Type your answer here...">
+						</div>
+						<div class="form-group">
+							<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+							<button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+			<!-- <div class="r_scroll-btns">
+				<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+				<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+			</div> -->
+	    </div>
+		<div class="section pp-section" id="section6">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">6→   </span>Your unit number as well *
+							</label>
+							<h3 for="" id="r_sub-heading">
+								<br>so we can send you free gifts!!
+							</h3>
+							<input class="r_field r_name-get" id="name" type="text" placeholder="Type your answer here...">
+						</div>
+						<div class="form-group">
+							<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+							<button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+			<!-- <div class="r_scroll-btns">
+				<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+				<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+			</div> -->
+	    </div>
+		<div class="section pp-section" id="section7">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">7→   </span>And finally your postal code *
+							</label>
+							<h3 for="" id="r_sub-heading">
+								<br>so we can send you free gifts!!
+							</h3>
+							<input class="r_field r_name-get" id="name" type="text" placeholder="Type your answer here...">
+						</div>
+						<div class="form-group">
+							<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+							<button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+			<!-- <div class="r_scroll-btns">
+				<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+				<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+			</div> -->
+	    </div>
+		<div class="section pp-section" id="section8">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">8→   </span>Select your package type *
+							</label>
+							<h3 for="" id="r_sub-heading">
+								<br>Our car washers are present on these days for your selection
+							</h3>
+							<div id="rb-1" class="rb">
+								<div class="rb-tab rb-tab-active" data-value="1">
+								  <div class="rb-spot">
+									<span class="rb-txt">A</span>
+								  </div>
+								  <div class="r_rb-spot">
+									<span class="r_rb-txt">A
+										Package A - Monday & Thursday (50 slots left)</span>
+								  </div>
+								</div>
+								<div class="rb-tab" data-value="2">
+								  <div class="rb-spot">
+									<span class="rb-txt">B</span>
+								  </div>
+								  <div class="r_rb-spot">
+									<span class="r_rb-txt">B
+										Package B - Tuesday & Friday (50 slots left)</span>
+								  </div>
+
+								</div>
+							</div>
+							<!-- <input class="r_field r_name-get" id="name" type="text" placeholder="Type your answer here..."> -->
+						</div>
+						<div class="form-group">
+							<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+							<button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+			<!-- <div class="r_scroll-btns">
+				<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+				<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+			</div> -->
+	    </div>
+		<div class="section pp-section" id="section9">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">9→   </span>Select any add ons *
+							</label>
+							<h3 for="" id="r_sub-heading">
+								<br>For extra care for your vehicle, you may choose to add some services for a full and constant car glow up
+							</h3>
+							<div id="rb-1" class="rb-checkbox">
+								<div class="rb-tab-checkbox rb-tab-active-checkbox" data-value="1">
+								  <div class="rb-spot-checkbox">
+									<span class="rb-txt-checkbox">A</span>
+								  </div>
+								  <div class="r_rb-spot-checkbox">
+									<span class="r_rb-txt-checkbox">A
+										Tyre shine : + $1 per wash only</span>
+								  </div>
+								</div>
+								<div class="rb-tab-checkbox" data-value="1">
+								  <div class="rb-spot-checkbox">
+									<span class="rb-txt-checkbox">B</span>
+								  </div>
+								  <div class="r_rb-spot-checkbox">
+									<span class="r_rb-txt-checkbox">Interior cleaning. Once a month. Based on appointment booking: +$50</span>
+								  </div>
+
+								</div>
+							</div>
+							<!-- <input class="r_field r_name-get" id="name" type="text" placeholder="Type your answer here..."> -->
+						</div>
+						<div class="form-group">
+							<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+							<button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+			<!-- <div class="r_scroll-btns">
+				<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+				<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+			</div> -->
+	    </div>
+		<div class="section pp-section" id="section10">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">10→   </span>And your vehicle number? *
+							</label>
+							<h3 for="" id="r_sub-heading">
+								<br>Please provide the vehicle number you wish to get washed by us. For more than 1 vehicle, you may contact our friendly customer support after making payment for this vehicle
+							</h3>
+							<input class="r_field r_name-get" id="name" type="text" placeholder="Type your answer here...">
+						</div>
+						<div class="form-group">
+							<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+							<button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+			<!-- <div class="r_scroll-btns">
+				<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+				<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+			</div> -->
+	    </div>
+		<div class="section pp-section" id="section11">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">11→   </span>Please enter your quantity. *
+							</label>
+							<input class="r_field  r_name-get calc-quantity" id="name" type="text" placeholder="10" required>
+								
+								<div class="form-group">
+									<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+									<button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+								</div>
+							</div>
+						</div>
+						
+					</form>
+				</div>
+	    	</div>
+			<!-- <div class="r_scroll-btns">
+				<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+				<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+			</div> -->
+		<div class="section pp-section" id="section12">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">12→   </span>Please Referral Code. *
+							</label>
+							<input class="r_field  r_name-get" id="name" type="text" placeholder="Optional">
+									
+						</div>
+								<div class="form-group">
+									<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+									<button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">OK &#10003;</button>
+								</div>
+							</div>
+						</div>
+						
+					</form>
+				</div>
+			<!-- <div class="r_scroll-btns">
+				<button onclick="$.fn.pagepiling.moveSectionUp();" id="previous" title="Precedente" class="w3-button w3-circle"><i class="fas fa-chevron-up"></i></button>
+				<button onclick="$.fn.pagepiling.moveSectionDown();" id="next" title="Successiva" class="w3-button w3-circle"><i class="fas fa-chevron-down"></i></button>
+			</div> -->
+		
+		<div class="section pp-section" id="section13">
+	    	<div class="intro">
+	    		<div class="container r_container">
+					<form action="" id="regForm">
+						<div class="from-group">
+							<label class="r_label" for="name">
+								<span class="r_series">13→   </span>... *
+							</label>
+							<h3 for="" id="r_sub-heading">
+								<br>Congratulations! We have reached the end. Once you have made your payment, we will walk you through the onboarding steps! Don't worry, you will only be charged the moment your FIRST wash is completed.
+							</h3>
+							<h3 for="" class="r_mt-20" id="r_sub-heading">
+								Your credit card will be charged:<b class="r_dollar">$</b> <span id="calc-price"></span> <br>
+								We never store your card number or CVC number
+							</h3>
+							<span class="r_series r_d-flex align-items-end r_ml-40 r_d-block"><svg height="16" width="12"><path d="M6 8.915V11H5V8.915a1.5 1.5 0 111 0zM0 4.998C0 4.447.445 4 .996 4h9.008c.55 0 .996.446.996.998v7.004c0 .551-.445.998-.996.998H.996A.996.996 0 010 12.002V4.998z"></path><path d="M4 4V3a1 1 0 011.005-1h.99A.998.998 0 017 3v1H4zM2 3v3h7V3c0-1.663-1.344-3-3.005-3h-.99A3 3 0 002 3z"></path></svg>&nbsp;Secured By&nbsp;<svg height="16" width="40"><path d="M19.337 12.882h3.19V4.185h-3.19v8.697zM0 6.859c0 1.592 1.074 2.183 1.83 2.528l.403.18c.52.23.755.378.755.706 0 .426-.37.492-.856.492-.437 0-1.427-.23-1.998-.377v2.248c.655.196 1.628.41 2.551.41 1.427 0 3.424-.328 3.424-2.953 0-1.641-1.09-2.199-1.88-2.544l-.335-.147c-.554-.247-.79-.362-.79-.706 0-.328.286-.427.672-.427.57 0 1.527.197 1.997.345V4.43a6.515 6.515 0 00-2.349-.41C1.864 4.021 0 4.53 0 6.86zm16.164-1.837l-.47-.837H13.16v8.697h3.189V6.925a2.122 2.122 0 011.057-.295c.437 0 .856.082 1.175.164V4.2c-.151-.082-.487-.18-.99-.18a1.47 1.47 0 00-1.427 1zm10.894 5.759v-4.2c.201-.115.57-.263.755-.263.52 0 .672.213.672 2.166 0 1.92-.336 2.38-.89 2.38a2.22 2.22 0 01-.537-.083zm-.134-6.055l-.47-.542h-2.585V16h3.19v-3.135c.301.066.72.18 1.124.18 1.174 0 3.49-.064 3.49-4.56 0-4.104-1.543-4.464-2.853-4.464-.721 0-1.409.279-1.896.705zm9.518 1.15c.587 0 .587.836.587 2.001h-1.342c.033-1.034-.051-2.002.755-2.002zm-3.928 2.69c0 4.169 2.434 4.48 4.43 4.48 1.11 0 2.234-.311 2.603-.443v-2.265c-.47.081-1.696.345-2.602.345-.79 0-1.258-.181-1.258-1.116H40V8.533c0-3.479-1.494-4.512-3.558-4.512-2.014 0-3.928.87-3.928 4.546zm-24.49-6.35L7.62 4.185H6.446V6.17h1.175v4.365c0 2.412 1.695 2.51 2.602 2.51.704 0 1.779-.164 2.265-.278v-2.216c-.235.032-.94.131-1.141.131-.353 0-.537-.115-.537-.705V6.171h1.259l.42-1.986h-1.68V1.559l-2.785.657zm11.33-.657c0 .853.688 1.559 1.577 1.559.89 0 1.578-.706 1.578-1.56C22.509.707 21.82 0 20.932 0c-.89 0-1.578.706-1.578 1.559z"></path></svg></span>
+							<!-- <div class="container">
+								<form action="" id="regForm">
+									<div class="from-group">
+										<h3 for="" id="r_sub-heading">
+											Quantity? *
+										</h3>
+										<input class="r_field r_name-get" id="name" type="text" placeholder="Type your answer here...">
+									</div>
+								</form>
+							</div> -->
+							<div class="container r_container r_my-10">
+								<form action="" id="regForm">
+									<!-- <div class="from-group payment-form quantity-form">
+										<div class="payment-50  r_d-flex">
+											<div class="payment-exp">
+												<label for="" class="r_payment">Quantity *</label>
+											<input class="r_field r_payfield r_name-get calc-quantity" id="name" type="text" placeholder="10" required>
+											</div>
+											<div class="payment-cvc">
+											<label for="" class="r_payment">
+												Referral Code
+											</label> 
+											<input class="r_field r_payfield r_name-get" id="name" type="text" placeholder="Optional">
+											</div>
+										</div>
+									</div> -->
+							<!-- <h3 for="" class="r_mt-20" id="r_sub-heading">
+								Your credit card will be charged:<b class="r_dollar">$</b> <span id="calc-price"></span> <br>
+								We never store your card number or CVC number
+							</h3>
+							<span class="r_series r_d-flex align-items-end r_ml-40 r_d-block"><svg height="16" width="12"><path d="M6 8.915V11H5V8.915a1.5 1.5 0 111 0zM0 4.998C0 4.447.445 4 .996 4h9.008c.55 0 .996.446.996.998v7.004c0 .551-.445.998-.996.998H.996A.996.996 0 010 12.002V4.998z"></path><path d="M4 4V3a1 1 0 011.005-1h.99A.998.998 0 017 3v1H4zM2 3v3h7V3c0-1.663-1.344-3-3.005-3h-.99A3 3 0 002 3z"></path></svg>&nbsp;Secured By&nbsp;<svg height="16" width="40"><path d="M19.337 12.882h3.19V4.185h-3.19v8.697zM0 6.859c0 1.592 1.074 2.183 1.83 2.528l.403.18c.52.23.755.378.755.706 0 .426-.37.492-.856.492-.437 0-1.427-.23-1.998-.377v2.248c.655.196 1.628.41 2.551.41 1.427 0 3.424-.328 3.424-2.953 0-1.641-1.09-2.199-1.88-2.544l-.335-.147c-.554-.247-.79-.362-.79-.706 0-.328.286-.427.672-.427.57 0 1.527.197 1.997.345V4.43a6.515 6.515 0 00-2.349-.41C1.864 4.021 0 4.53 0 6.86zm16.164-1.837l-.47-.837H13.16v8.697h3.189V6.925a2.122 2.122 0 011.057-.295c.437 0 .856.082 1.175.164V4.2c-.151-.082-.487-.18-.99-.18a1.47 1.47 0 00-1.427 1zm10.894 5.759v-4.2c.201-.115.57-.263.755-.263.52 0 .672.213.672 2.166 0 1.92-.336 2.38-.89 2.38a2.22 2.22 0 01-.537-.083zm-.134-6.055l-.47-.542h-2.585V16h3.19v-3.135c.301.066.72.18 1.124.18 1.174 0 3.49-.064 3.49-4.56 0-4.104-1.543-4.464-2.853-4.464-.721 0-1.409.279-1.896.705zm9.518 1.15c.587 0 .587.836.587 2.001h-1.342c.033-1.034-.051-2.002.755-2.002zm-3.928 2.69c0 4.169 2.434 4.48 4.43 4.48 1.11 0 2.234-.311 2.603-.443v-2.265c-.47.081-1.696.345-2.602.345-.79 0-1.258-.181-1.258-1.116H40V8.533c0-3.479-1.494-4.512-3.558-4.512-2.014 0-3.928.87-3.928 4.546zm-24.49-6.35L7.62 4.185H6.446V6.17h1.175v4.365c0 2.412 1.695 2.51 2.602 2.51.704 0 1.779-.164 2.265-.278v-2.216c-.235.032-.94.131-1.141.131-.353 0-.537-.115-.537-.705V6.171h1.259l.42-1.986h-1.68V1.559l-2.785.657zm11.33-.657c0 .853.688 1.559 1.577 1.559.89 0 1.578-.706 1.578-1.56C22.509.707 21.82 0 20.932 0c-.89 0-1.578.706-1.578 1.559z"></path></svg></span> -->
+							<!-- <input class="r_field r_name-get" id="name" type="text" placeholder="Type your answer here..."> -->
+						</div>
+						<div class="container r_container r_mt-20">
+							<form action="" id="regForm">
+								<div class="from-group payment-form">
+									<!-- <label class="r_label" for="name">
+										<span class="r_series">1→   </span>Let's start with your <b>name.</b> *
+									</label> -->
+									<div class="CardIconsWrapper-sc-__sc-u4swbz-7 fJKAMl"><div class="Distribute-sc-__sc-5km20m-0 bswDlK"><span aria-hidden="true" class="Boundary-sc-__sc-184gmm6-0 gHuTxd"><svg height="19" viewBox="0 0 31 19" width="31"><g fill="none"><path d="M11 2h8v14h-8z" fill="#FF5F00"></path><path d="M12 9c0-3 1-5 3-7a9 9 0 00-5-2C5 0 1 4 1 9s4 9 9 9a9 9 0 005-2 9 9 0 01-3-7z" fill="#EB001B"></path><path d="M30 9c0 5-4 9-9 9a9 9 0 01-6-2 9 9 0 004-7c0-3-1-5-4-7a9 9 0 016-2c5 0 9 4 9 9z" fill="#F79E1B"></path></g></svg></span><span aria-hidden="true" class="Boundary-sc-__sc-184gmm6-0 gHuTxd"><svg height="15" viewBox="0 0 48 15" width="48"><g fill="#004F8B"><path d="M16.947 14.284L19.337.228h3.82l-2.39 14.056h-3.82M34.622.574c-.757-.285-1.943-.59-3.424-.59-3.775 0-6.434 1.906-6.457 4.639-.02 2.02 1.899 3.146 3.348 3.818 1.487.69 1.987 1.129 1.98 1.744-.01.942-1.188 1.373-2.286 1.373-1.529 0-2.341-.213-3.596-.738l-.492-.224-.536 3.147c.892.392 2.542.732 4.255.75 4.016 0 6.623-1.885 6.653-4.803.014-1.598-1.004-2.815-3.208-3.818-1.335-.65-2.153-1.085-2.144-1.743 0-.584.692-1.209 2.188-1.209a7.028 7.028 0 012.859.539l.342.162.518-3.047m9.796-.332h-2.952c-.914 0-1.598.25-2 1.165L33.792 14.29h4.012s.656-1.732.804-2.112l4.893.005c.114.492.465 2.107.465 2.107h3.545L44.418.242m-4.71 9.06c.316-.81 1.522-3.93 1.522-3.93-.023.038.313-.813.506-1.341l.259 1.212.884 4.058h-3.171M13.743.239l-3.74 9.585-.399-1.948C8.908 5.63 6.74 3.197 4.314 1.98l3.42 12.292 4.041-.004L17.79.238h-4.047"></path><path d="M6.533.23H.373L.324.522c4.793 1.164 7.964 3.975 9.28 7.354l-1.339-6.46C8.034.527 7.363.262 6.533.23"></path></g></svg></span><span aria-hidden="true" class="Boundary-sc-__sc-184gmm6-0 gHuTxd"><svg height="24" viewBox="0 0 24 24" width="24"><g fill="none"><path d="M.024.024h23.893v12.937l-1.183 1.853 1.183 1.65v7.524H.024V11.793l.74-.852-.74-.816z" fill="#016FD0"></path><path d="M4.662 16.723v-3.762h3.972l.426.557.44-.557h14.417v3.503s-.377.255-.813.26H15.12l-.48-.594v.593h-1.575v-1.012s-.215.141-.68.141h-.536v.871H9.466l-.425-.569-.432.57H4.662zM.024 10.125L.92 8.031h1.549l.508 1.173V8.03h1.925l.303.848.293-.848h8.643v.426s.455-.426 1.202-.426l2.804.01.5 1.157V8.031h1.61l.444.665V8.03h1.626v3.762h-1.626l-.425-.667v.667H17.91l-.238-.593h-.637l-.234.593h-1.605c-.643 0-1.054-.418-1.054-.418v.418h-2.42l-.48-.593v.593H2.238L2 11.199h-.634l-.236.593H.024v-1.668z" fill="#FFF"></path><path d="M1.237 8.495L.029 11.312h.786l.223-.564h1.296l.221.564h.804L2.152 8.495h-.915zm.447.655l.395.986h-.792l.397-.986zM3.442 11.311V8.494l1.118.004.65 1.817.635-1.821h1.108v2.817h-.702V9.235l-.744 2.076H4.89l-.746-2.076v2.076zm3.992 0V8.494h2.291v.63H8.143v.482h1.545v.593H8.143v.5h1.582v.612zM10.132 8.495v2.817h.702V10.31h.295l.842 1h.859l-.924-1.037a.857.857 0 00.77-.866c0-.592-.464-.913-.982-.913h-1.562zm.702.63h.802c.193 0 .333.15.333.296 0 .187-.181.297-.322.297h-.813v-.593zM13.68 11.311h-.717V8.494h.717zm1.7 0h-.155c-.749 0-1.204-.592-1.204-1.397 0-.825.45-1.42 1.395-1.42h.777v.667h-.805c-.384 0-.655.3-.655.76 0 .546.31.775.757.775h.185l-.295.615zM16.907 8.495L15.7 11.312h.787l.223-.564h1.296l.221.564h.804l-1.207-2.817h-.916zm.447.655l.395.986h-.79l.395-.986zM19.112 11.311V8.494h.893l1.14 1.77v-1.77h.702v2.817h-.864l-1.169-1.816v1.816zm-13.97 4.93v-2.817h2.292v.63H5.852v.482h1.545v.593H5.852v.5h1.582v.612zm11.228 0v-2.817h2.291v.63H17.08v.482h1.537v.593H17.08v.5h1.581v.612zm-8.847 0l1.115-1.391-1.142-1.426h.885l.68.882.683-.882h.85l-1.128 1.409 1.118 1.408H9.7l-.66-.867-.645.867zM10.668 13.425v2.817h.72v-.89h.74c.625 0 1.099-.333 1.099-.98 0-.536-.372-.947-1.008-.947h-1.551zm.72.637h.779c.202 0 .346.124.346.324 0 .188-.144.324-.349.324h-.776v-.648zm2.144-.638v2.817h.702v-1h.296l.841 1h.859l-.924-1.038a.857.857 0 00.77-.865c0-.593-.464-.914-.982-.914h-1.562zm.702.63h.803c.192 0 .332.151.332.297 0 .187-.181.296-.322.296h-.813v-.593zM18.987 16.241v-.611h1.405c.208 0 .298-.113.298-.237 0-.118-.09-.238-.298-.238h-.635c-.552 0-.86-.337-.86-.844 0-.451.282-.887 1.102-.887h1.368l-.296.634h-1.183c-.226 0-.295.119-.295.233 0 .116.086.245.258.245h.666c.615 0 .882.35.882.809 0 .493-.298.896-.916.896h-1.496zm2.577 0v-.611h1.405c.208 0 .298-.113.298-.237 0-.118-.09-.238-.298-.238h-.635c-.552 0-.86-.337-.86-.844 0-.451.282-.887 1.102-.887h1.368l-.296.634h-1.183c-.226 0-.295.119-.295.233 0 .116.086.245.258.245h.666c.615 0 .882.35.882.809 0 .493-.297.896-.916.896h-1.496z" fill="#016FD0"></path></g></svg></span><span aria-hidden="true" class="Boundary-sc-__sc-184gmm6-0 gHuTxd"><svg height="18" viewBox="0 0 24 18" width="24"><defs><path d="M11.91 0H0v17.67h23.83V0H11.92z" id="prefix__a"></path></defs><g fill="none" transform="translate(.15 .06)"><mask fill="#fff" id="prefix__b"><use xlink:href="#prefix__a"></use></mask><path d="M18.14 8.32h-.02V6.88h1.66l.03.01h.06l.03.01.03.01h.03a1.24 1.24 0 00.05.03l.03.01.03.01.03.02a.07.07 0 00.03.01l.03.02.03.02.03.03.03.02.02.03.04.03.02.04a.21.21 0 01.03.04l.03.05.03.07.03.1a.83.83 0 010 .33l-.03.1-.03.06-.03.05a.24.24 0 01-.03.04l-.02.04a.3.3 0 01-.03.03l-.03.03-.03.03-.03.02-.03.02-.03.02-.03.01-.03.02-.02.01-.03.01a1.24 1.24 0 00-.06.02l-.03.01a.1.1 0 01-.03 0l-.03.02h-.12l-.02.01h-1.6zm-.02 2.43h1.81l.02-.01h.06l.03-.01h.03l.03-.01.03-.01.02-.01.03-.01a.06.06 0 01.03-.01.08.08 0 01.03-.02l.03-.01a.07.07 0 00.03-.02l.03-.02.03-.02a.93.93 0 01.03-.02l.02-.02.03-.03.03-.03.03-.04.03-.04a.3.3 0 00.03-.04l.03-.05a.54.54 0 00.03-.07l.03-.1a.82.82 0 000-.36l-.03-.1-.03-.06-.03-.06a.35.35 0 00-.03-.04c0-.02-.02-.03-.03-.04l-.03-.04-.03-.03-.03-.02a.16.16 0 00-.02-.03l-.03-.02-.03-.02a.11.11 0 00-.03-.02.07.07 0 00-.03-.02.1.1 0 00-.03-.01l-.03-.01-.03-.02-.03-.01-.02-.01h-.03l-.03-.01h-.02l-.01-.01h-.07l-.03-.01h-1.83v1.55zM23.98 0h-4.52l-.03.01h-.09l-.03.01h-.08l-.03.01h-.03l-.03.01h-.03l-.03.01h-.03l-.03.01H19a.06.06 0 01-.02.01l-.03.01h-.03l-.03.01-.03.01-.03.01a.32.32 0 00-.03.01h-.03l-.03.02h-.02l-.03.02h-.03l-.03.02h-.03l-.03.02-.03.01-.03.01-.03.01-.02.01a.1.1 0 01-.03.02l-.03.01-.03.02h-.03l-.03.03a.12.12 0 00-.03 0c0 .01-.01.02-.03.02l-.03.02-.02.01-.03.02-.03.02-.03.01-.03.02-.03.02-.03.02-.03.01-.03.02-.03.03-.02.02c-.01 0-.02 0-.03.02l-.03.02-.03.02-.03.02a.15.15 0 01-.03.02l-.03.03a.13.13 0 00-.03.02s-.01.02-.03.02l-.02.03-.03.03-.03.02-.03.03-.03.03-.03.03-.03.03-.03.03a.18.18 0 00-.02.03l-.03.03-.03.04a.24.24 0 01-.03.03l-.03.04a.14.14 0 00-.03.03l-.03.04-.03.04-.03.04-.02.04-.03.05-.03.04a.4.4 0 01-.03.05l-.03.05a.28.28 0 00-.03.05l-.03.06-.03.05-.03.07-.02.06-.03.07c-.02.02-.02.05-.03.08l-.03.08-.03.09-.03.1-.03.13a2.87 2.87 0 00-.06.6V6h4.6l.03.01h.09l.03.01h.06l.03.01h.02l.03.01h.03l.03.01h.03l.03.02h.03l.03.01h.03l.02.02h.03l.03.01.03.01.03.01.03.01.03.01.03.01.03.02.02.01.03.01.03.02a.1.1 0 01.03.01l.03.01.03.02.03.02s.02 0 .03.02l.03.01.02.02.03.02a.09.09 0 00.03.02l.03.02a.15.15 0 00.03.03l.03.02.03.03.03.03.03.03a.18.18 0 00.03.03l.03.03.02.04.03.04.03.04.03.05.03.06.03.06.03.08a1.45 1.45 0 01.06.27 1.9 1.9 0 010 .28 1.43 1.43 0 01-.06.27l-.03.08-.03.06-.03.06c0 .02-.02.03-.03.05a.4.4 0 00-.03.04.39.39 0 01-.03.05l-.02.03-.03.04-.03.03-.03.03-.03.03-.03.03-.03.02-.03.03-.03.02-.02.02a.93.93 0 00-.03.02l-.03.02-.03.03-.03.01-.03.02-.03.01a.19.19 0 01-.03.02l-.03.01a.09.09 0 01-.02.02l-.04.01-.02.01a.13.13 0 01-.03.02.12.12 0 00-.03.01l-.03.01-.03.01-.03.01-.03.01a.1.1 0 00-.03 0 .22.22 0 01-.03.02h-.02l-.03.01-.03.01h-.03l-.03.01-.03.01h-.03l-.03.01h-.03l-.02.01v.03h.05l.06.01.06.01h.06l.03.01h.02l.03.01h.03l.03.01h.03l.03.01.03.01h.03l.03.01.03.01.03.01.02.01.03.01h.03l.03.02a.8.8 0 00.03 0l.03.02.03.01.02.02h.03l.03.02.03.01.03.02.03.01.03.02.03.01.03.02.03.02.03.02.02.02.03.02c.01 0 .02 0 .03.02l.03.02.03.02.03.03.03.02.02.03.04.03.02.03c.02 0 .02.02.03.03l.03.03.03.04.03.04c0 .02.02.03.03.04l.03.05c0 .02.02.04.03.05 0 .03.02.05.03.07l.02.07c.02.03.02.06.03.1a2.1 2.1 0 01.05.32c0 .07 0 .13-.02.2a1.95 1.95 0 01-.03.14c0 .04-.01.07-.03.1a.96.96 0 01-.02.07l-.03.07-.03.05-.03.06-.03.04-.03.04-.03.04-.03.04a.26.26 0 00-.03.03l-.02.03-.04.03-.02.03-.03.03-.03.02-.03.02-.03.03-.03.02-.03.02-.02.02a.15.15 0 01-.03.02c-.02 0-.02.01-.03.02a.15.15 0 00-.03.01l-.03.02a.29.29 0 01-.03.01l-.03.02-.03.01-.03.02-.02.01-.03.01a.1.1 0 00-.03.02h-.03l-.03.02a1.24 1.24 0 00-.06.02l-.03.01a.6.6 0 00-.03.01l-.02.01-.03.01H22l-.03.02h-.03l-.03.01h-.03l-.03.01a.1.1 0 00-.03.01h-.03l-.03.01h-.05l-.03.01h-.03l-.03.01h-.12l-.03.01h-4.8v6h4.73l.03-.01h.06l.02-.02h.09l.03-.01h.03a.1.1 0 01.03-.02h.06l.02-.02h.03l.03-.01.03-.01.03-.01h.03l.03-.02h.03l.03-.01a.18.18 0 01.02-.01.15.15 0 00.03-.02h.03l.03-.02a.24.24 0 01.03 0l.03-.02.03-.01a.12.12 0 01.03-.02h.03l.02-.02.03-.02a.07.07 0 01.03 0 .09.09 0 01.03-.02l.03-.02.03-.01.03-.02.03-.01.03-.02a.09.09 0 01.03-.01l.03-.02.02-.02c.01 0 .02 0 .03-.02a.08.08 0 01.03-.01l.03-.02.03-.02.03-.02.03-.02.02-.02a.63.63 0 00.04-.02l.02-.02.03-.02.03-.02.03-.03.03-.02.03-.03a.4.4 0 00.05-.05.22.22 0 00.04-.03l.02-.02.03-.03a.11.11 0 01.03-.03l.03-.03.03-.03.03-.03.03-.03a.24.24 0 00.02-.04l.04-.03.02-.03.03-.04.03-.04.03-.04.03-.04.03-.04.03-.04c0-.02.01-.03.03-.05l.02-.05a.94.94 0 01.03-.04l.03-.06a.99.99 0 01.03-.05l.03-.06.03-.06.03-.06.03-.07c0-.02.01-.05.03-.07a.74.74 0 00.02-.08 1.45 1.45 0 00.06-.2l.03-.11.03-.15a2.05 2.05 0 00.04-.48V0h-.06z" fill="#4C9840" mask="url(#prefix__b)"></path><path d="M16.08 0H11.5l-.03.01h-.06l-.03.01h-.06l-.02.01h-.03l-.03.01h-.03l-.03.01h-.03l-.03.01h-.03l-.02.01-.03.01h-.03l-.03.01-.03.01-.03.01h-.03l-.02.02a.1.1 0 01-.03 0l-.03.02a.18.18 0 00-.03 0l-.03.02a.24.24 0 00-.03 0L10.7.2h-.03l-.03.02h-.03c0 .02-.02.02-.03.02l-.02.02h-.03l-.03.02-.03.01-.03.02-.03.01-.03.02-.02.01-.04.02a.07.07 0 01-.02.01l-.03.02a.12.12 0 00-.03.02l-.03.01a.15.15 0 00-.03.02c-.01 0-.02 0-.03.02a.13.13 0 01-.03.01L10.1.5l-.03.02a.16.16 0 00-.03.02.15.15 0 00-.03.02l-.03.02-.03.03-.03.02a.22.22 0 00-.03.02l-.03.02-.03.03s-.02 0-.02.02l-.03.02-.03.03-.03.02a.13.13 0 01-.03.03l-.03.03a.91.91 0 01-.03.03.2.2 0 00-.02.03l-.03.03c-.02 0-.03.02-.03.03L9.52 1l-.03.03-.03.03a.2.2 0 01-.03.04l-.03.04-.03.03-.02.04-.04.04-.02.04-.03.04a.21.21 0 01-.03.05l-.03.04a.5.5 0 00-.03.05l-.03.05-.03.05a.4.4 0 01-.03.06l-.03.05a.41.41 0 01-.02.06L9 1.8l-.03.07-.03.08a3.02 3.02 0 01-.03.08l-.03.09-.03.1a2.97 2.97 0 00-.09.72V6.8l.06-.05a.14.14 0 00.03-.02l.03-.03.03-.02.03-.02.03-.02A.1.1 0 009 6.62l.03-.02.02-.02.03-.01.03-.02.03-.02.03-.02c.01 0 .02 0 .03-.02l.03-.01.03-.02.03-.01.02-.02.03-.01c.02 0 .02-.01.03-.02l.03-.01.03-.02.03-.01.03-.01.03-.02.03-.01.02-.01.03-.02h.03l.03-.02h.03l.03-.02.03-.01.03-.01.03-.01.02-.02a.14.14 0 00.03 0l.03-.01.03-.02h.03l.03-.01.03-.01.03-.01.03-.01.03-.01h.02l.03-.02h.03l.03-.01.03-.01h.03l.03-.02h.03l.03-.01h.03l.03-.02h.05l.03-.01h.03l.03-.02h.03l.03-.01h.03l.03-.01h.03l.02-.01h.04l.02-.01h.03l.03-.01h.03l.03-.01h.03l.06-.01h.03l.02-.01h.03l.06-.01h.06l.03-.01h.06l.05-.01h.06l.03-.01h.09l.02-.01h.15l.03-.01h.2l.03-.01h1.12l.03.01h.15l.05.02h.18l.03.01h.05l.03.01h.09l.03.01h.05l.03.01h.06l.03.01.03.01h.06l.03.01h.02l.03.01h.06l.03.01h.03l.03.01h.06l.02.01h.03l.03.01h.03l.03.01h.03l.03.01h.03l.03.01h.02l.03.01h.03l.03.02h.03l.06.01h.03l.02.01h.03l.03.01h.03l.03.02h.06l.03.01H15l.03.02h.05l.03.01h.03l.03.02h.06l.03.02h.03l.02.01v1.24l-.02-.01-.03-.01-.03-.02-.03-.01-.03-.01-.03-.02-.03-.01-.03-.02-.05-.03H15l-.03-.02-.03-.01-.03-.02h-.03l-.03-.02-.03-.01-.02-.01-.03-.02h-.03l-.03-.02-.06-.02-.03-.01-.03-.01-.03-.01-.05-.02-.03-.01-.03-.01-.03-.01-.06-.03h-.03l-.02-.01-.03-.01h-.03L14.23 7h-.03l-.03-.01-.03-.01-.03-.01-.03-.01h-.02l-.04-.01-.02-.01-.03-.01h-.03l-.03-.01-.06-.02h-.06l-.03-.01h-.02l-.03-.01-.03-.01h-.03l-.03-.01h-.03l-.03-.01h-.03l-.02-.01h-.06l-.03-.01h-.06l-.03-.01h-.03l-.02-.01h-.22l-.02-.01h-.18l-.03-.01h-.4l-.03.01h-.09l-.03.01h-.03l-.03.01h-.05l-.03.02h-.06l-.03.01h-.03a.1.1 0 01-.03.01h-.03a.1.1 0 01-.02.02.1.1 0 01-.03 0l-.03.01h-.03l-.03.02h-.03a.14.14 0 01-.03.02 1.24 1.24 0 00-.06.02h-.02l-.03.02a.22.22 0 01-.03.01.12.12 0 00-.03.02h-.03l-.03.02-.03.01a.13.13 0 01-.03.02l-.03.01s-.02 0-.02.02a.2.2 0 00-.03.01l-.03.02-.03.01-.03.02-.03.02a.37.37 0 01-.03.02.18.18 0 01-.03.02l-.03.02-.02.02-.03.02a.13.13 0 01-.03.03l-.03.03-.03.02-.03.03-.03.02c0 .02-.02.02-.03.04l-.02.03a.2.2 0 00-.03.03l-.03.03-.03.04-.03.04-.03.04c0 .02-.02.03-.03.05l-.03.04-.03.05-.02.06-.03.06-.03.07-.03.07a.6.6 0 01-.03.09l-.03.1-.03.14-.02.2a2.06 2.06 0 00-.02.26c0 .1 0 .18.02.26a1.8 1.8 0 00.02.2l.03.14c0 .04.02.07.03.1l.03.1.03.07.03.06.03.06.02.06.03.05.03.05.03.04a.27.27 0 00.03.04l.03.04a.15.15 0 00.03.04l.03.04.03.03.02.03.03.03.03.03.03.02.03.03a.2.2 0 01.03.02l.03.03.03.02.02.02.03.02.03.02.03.02.03.02.03.02.03.01.03.02.03.01.02.02.03.01.03.02.03.01.03.02h.03l.03.02.03.01.03.01.02.02h.03l.03.02h.03l.03.01.03.01a.1.1 0 01.03.01.22.22 0 00.02.01.1.1 0 01.03 0l.03.01.03.01h.03l.03.01h.03l.03.01.03.01h.06l.02.01h.03l.03.01h.06l.03.01h.08l.03.01h.06a.1.1 0 01.03 0h.52l.05-.02h.15l.03-.01h.05l.06-.02h.06l.03-.01h.03l.03-.01h.03l.03-.01h.02l.03-.01.03-.01h.03l.03-.01.03-.01h.03l.05-.02.07-.01.05-.02h.03l.03-.01.03-.01.03-.01h.02l.03-.02h.03l.03-.01.03-.01.03-.01.03-.01h.03l.05-.03h.03l.03-.02h.03l.03-.02h.03l.03-.02.03-.01.03-.01.02-.01.03-.02h.03l.03-.02.03-.01.03-.01.03-.02h.03l.03-.02.02-.02h.03l.03-.02.03-.02h.03l.03-.02.06-.03.03-.01.02-.02.03-.01.06-.03.03-.01v1.24l-.03.01-.06.01-.03.01h-.02l-.03.01-.06.02h-.03l-.03.01-.04.02-.05.01-.03.01h-.03l-.03.01h-.03l-.03.02h-.06l-.03.01h-.02l-.03.01h-.03l-.03.01h-.03l-.03.01h-.03l-.02.01-.04.01h-.05l-.03.01h-.03l-.03.01-.03.01h-.06l-.03.01h-.02l-.03.01h-.03l-.03.01H14l-.03.01-.05.01h-.06l-.03.01h-.03l-.03.01h-.06l-.05.01h-.03l-.03.01h-.09l-.06.01h-.05l-.03.01h-.09l-.03.01h-.14l-.03.01h-.2l-.03.01h-1.26l-.02-.01h-.12l-.03-.01h-.09l-.02-.01h-.03l-.06-.01h-.06l-.03-.01h-.06l-.02-.01h-.06l-.03-.02h-.06l-.03-.01h-.05l-.03-.01h-.03l-.03-.01h-.03l-.03-.01h-.03l-.03-.01h-.03l-.02-.01-.03-.01h-.03l-.03-.01-.06-.02h-.03l-.03-.01h-.03l-.02-.01-.03-.01-.03-.01h-.03l-.03-.02h-.03l-.03-.01-.03-.01-.03-.01h-.02l-.03-.02a.22.22 0 00-.03 0 .18.18 0 01-.03-.02h-.02l-.03-.02-.03-.01a.32.32 0 01-.03-.01l-.03-.01-.03-.01-.02-.01-.04-.01-.02-.02h-.03l-.03-.02-.03-.01-.03-.01-.05-.03-.03-.01a.1.1 0 00-.03-.02l-.03-.01-.03-.02-.03-.01a.11.11 0 00-.03-.02.1.1 0 00-.03-.01l-.03-.02-.02-.01-.03-.01-.03-.02-.03-.01-.03-.02-.03-.02-.03-.02-.03-.01a1.79 1.79 0 00-.03-.02l-.02-.02-.04-.02-.02-.02-.03-.02-.03-.03-.03-.02-.03-.02-.06-.05v6.8h4.62l.03-.01h.06l.03-.01h.06l.02-.01h.03l.03-.01h.03l.03-.01h.03l.03-.01h.02l.04-.01.02-.01a.1.1 0 01.03 0 .22.22 0 01.03-.02h.03l.03-.01.03-.01h.03l.02-.02h.03l.03-.01.03-.02h.03l.03-.02h.03l.03-.02a.32.32 0 01.03 0l.05-.04h.03l.03-.02.03-.01.03-.02.03-.01.03-.02.02-.01.03-.02.03-.01.03-.02a.1.1 0 01.03-.01.23.23 0 01.03-.02l.03-.02.03-.01.03-.02.02-.02a.1.1 0 01.03-.02l.03-.02a1.79 1.79 0 01.03-.02l.03-.02.03-.02.03-.02a.24.24 0 01.03-.02.17.17 0 01.03-.02l.02-.03c.01 0 .02 0 .03-.02a.11.11 0 01.03-.02l.03-.03a.13.13 0 00.03-.02l.03-.03.03-.03.03-.03.03-.03.02-.02.04-.03.02-.03.03-.03.03-.04a.16.16 0 00.03-.03l.03-.04.03-.03.03-.04.02-.04a4.84 4.84 0 01.06-.08l.03-.04a.3.3 0 01.03-.05l.03-.04.03-.05c0-.02.02-.03.03-.05l.03-.05a.8.8 0 01.02-.06.26.26 0 00.03-.06l.03-.06.03-.07.03-.07.03-.07.03-.09.03-.1.02-.1.03-.13a3.16 3.16 0 00.06-.56V0h-.08z" fill="#A62839" mask="url(#prefix__b)"></path><path d="M7.31 0H2.74l-.03.01h-.05l-.03.01h-.06l-.03.01H2.5l-.03.01h-.03l-.03.01H2.4l-.03.01h-.03a.1.1 0 01-.03.01.07.07 0 01-.03.01h-.03a.1.1 0 01-.03.01L2.2.1l-.03.01h-.02L2.1.14a.18.18 0 01-.03 0l-.03.02h-.03l-.03.02h-.03L1.93.2h-.02l-.03.02-.03.01-.03.01-.03.02-.02.01-.03.01L1.7.3a.09.09 0 00-.03.01l-.03.01-.03.02-.03.01-.03.02-.02.02L1.5.4l-.03.02-.03.01a.15.15 0 01-.03.02l-.03.02a.2.2 0 00-.03.02.19.19 0 01-.03.01L1.3.51l-.02.03-.03.01-.03.03-.03.02-.03.02a.19.19 0 00-.03.02L1.1.66 1.08.7a.2.2 0 00-.04.02.2.2 0 00-.02.03L.99.76A.8.8 0 00.96.8H.93L.9.84.87.87.84.9.81.93a.5.5 0 00-.03.03.17.17 0 00-.03.03l-.02.03a.13.13 0 00-.03.04l-.03.03a.3.3 0 00-.03.03.23.23 0 01-.03.04.2.2 0 01-.03.04.3.3 0 00-.03.04l-.03.04a.3.3 0 00-.03.04.42.42 0 00-.03.05.4.4 0 00-.02.04l-.03.05a.26.26 0 00-.03.05l-.03.05a.32.32 0 01-.03.06l-.03.05-.03.06-.02.07-.04.07-.02.07-.03.09-.03.09-.03.1a2.9 2.9 0 00-.1.72v7.28l.07.03.03.01.03.01.03.02.03.01.02.01.04.02.05.02.03.01.03.02.03.01.03.01.03.01.02.02H.5l.06.04h.03l.03.02.03.01.03.01.03.01.02.01.04.01.02.01.03.01.06.02.03.01.03.01.03.01.03.01.03.01.02.01.03.01h.03l.03.02h.03l.03.01.03.01.02.01.03.01h.03l.03.01.03.01.03.01h.03l.03.01.03.01h.02l.04.01.05.02h.06l.03.01.05.02h.06l.03.01h.03l.03.01h.06l.05.01.03.01h.06l.03.01h.12l.02.01h.12l.03.01h.42l.04-.01h.05l.03-.01h.03l.03-.01h.03l.03-.01h.02l.03-.02h.03a.1.1 0 01.03-.01l.03-.01a1.24 1.24 0 00.06-.02l.03-.01.03-.01.02-.02a.14.14 0 00.04-.01l.02-.01a.12.12 0 00.03-.02l.03-.01.03-.02.03-.01.03-.02a.1.1 0 01.03-.01.18.18 0 01.02-.03l.03-.02.03-.02a.17.17 0 00.03-.02l.03-.02.03-.03.03-.02.03-.03.03-.03a.14.14 0 01.02-.03l.03-.04.03-.04a.13.13 0 00.03-.04l.03-.05.03-.05.03-.05.03-.06a.65.65 0 00.02-.07l.03-.1.03-.1a1.62 1.62 0 00.04-.36V6.02h2.56v3.42l-.01.29a2.02 2.02 0 01-.03.2c0 .05-.02.09-.03.13l-.03.1a.64.64 0 01-.03.1l-.02.07-.03.07a.37.37 0 00-.03.06l-.03.06a.36.36 0 00-.03.05.41.41 0 01-.03.05l-.03.05a.7.7 0 00-.06.08l-.02.04-.03.03-.03.04a.29.29 0 00-.03.03.23.23 0 01-.03.03l-.03.03-.03.03-.03.03-.03.03-.02.02a.2.2 0 01-.03.02.08.08 0 01-.03.03l-.03.02-.03.02a.13.13 0 01-.03.02.08.08 0 01-.03.02l-.03.02a.11.11 0 01-.03.02c0 .01-.01.02-.03.02l-.03.02a.07.07 0 01-.02.01l-.03.02a.16.16 0 01-.03.02l-.03.01-.03.02a.07.07 0 01-.03.01l-.03.02-.02.01a.06.06 0 00-.03.02l-.03.01-.03.01-.03.02a.09.09 0 00-.03.01.16.16 0 00-.03.01l-.03.01-.03.02h-.02l-.03.02a.1.1 0 01-.03.01l-.03.01-.03.01-.03.01-.03.01-.03.01h-.03l-.02.02h-.03l-.03.02h-.03l-.03.01-.03.01-.03.01h-.03l-.03.01-.02.01h-.03a.1.1 0 01-.03.01l-.03.01h-.03l-.03.01h-.03a.07.07 0 01-.03.01l-.02.01h-.03l-.03.01h-.03l-.03.01H4.4a.06.06 0 01-.03.01h-.03l-.03.01-.02-.02-.03.01H4.2l-.03.01h-.03l-.06.01h-.05l-.03.01h-.06l-.03.01H3.8l-.02.01h-.12l-.02.01H3.4l-.02.01h-.9l-.05-.01h-.18l-.03-.01h-.11l-.03-.01h-.09l-.03-.01h-.08l-.03-.01h-.08l-.04-.02H1.6l-.05-.02h-.09l-.03-.01h-.06l-.03-.01H1.3l-.02-.01h-.06l-.03-.01h-.03l-.03-.01h-.06l-.03-.01h-.02l-.03-.01H.96l-.03-.01H.9l-.03-.01H.84l-.03-.01H.78l-.02-.01H.73L.7 11.6H.67l-.03-.01H.61l-.03-.01H.55l-.05-.02H.47l-.03-.01H.4l-.03-.01H.35l-.03-.01-.03-.01-.05-.01-.04-.01H.18l-.03-.01-.03-.01H.09l-.03-.02-.06-.01v6.2h4.64l.03-.01h.06l.03-.01h.05l.03-.01h.03l.03-.01h.03l.03-.01a.07.07 0 01.03 0H5l.03-.01h.03l.03-.01.03-.01h.03a.43.43 0 01.03-.02h.03l.03-.02h.03l.03-.01.02-.01.03-.01.03-.01.03-.01.03-.01.03-.01a.13.13 0 01.03-.02.1.1 0 00.03-.01l.03-.01.02-.01.03-.02.03-.01.03-.01.03-.02.03-.01.03-.02.02-.01.03-.02a.1.1 0 01.03-.01l.03-.02c.01 0 .02 0 .03-.02a.12.12 0 00.03-.01l.03-.02A.29.29 0 016 17.2l.03-.02a.93.93 0 00.05-.03l.03-.02.03-.02.03-.02.03-.02a.93.93 0 00.06-.05l.03-.02.02-.02.04-.03a.14.14 0 00.02-.02l.03-.03a.27.27 0 00.03-.03l.03-.02c0-.02.02-.02.03-.03l.03-.03.03-.03a.09.09 0 01.03-.03l.03-.03.02-.03.03-.04.03-.03.03-.03.03-.04.03-.04.02-.03.03-.04.03-.04.03-.05a.4.4 0 01.03-.04l.03-.05a.18.18 0 01.03-.04.27.27 0 00.03-.06l.03-.05a.32.32 0 00.02-.05l.04-.06a.58.58 0 01.02-.07.51.51 0 00.03-.06l.03-.07a.59.59 0 00.03-.08l.03-.09.03-.09.03-.1.02-.14.04-.18.02-.38V0h-.07z" fill="#265091" mask="url(#prefix__b)"></path></g></svg></span><span aria-hidden="true" class="Boundary-sc-__sc-184gmm6-0 gHuTxd"><svg height="19" viewBox="0 0 24 19" width="24"><path d="M12.02 14.14V4.3a5.29 5.29 0 013.4 4.92 5.28 5.28 0 01-3.4 4.92zm-1.9 4.19h4.27c4.97.02 9.5-4.06 9.5-9.01 0-5.43-4.53-9.17-9.5-9.17h-4.27A8.96 8.96 0 00.95 9.32a9.1 9.1 0 009.17 9zM10.14.9a8.31 8.31 0 018.31 8.32c0 4.6-3.72 8.32-8.31 8.32a8.32 8.32 0 01-8.32-8.32A8.31 8.31 0 0110.14.9zM4.87 9.22A5.29 5.29 0 018.25 4.3v9.84a5.27 5.27 0 01-3.38-4.92z" fill="#3C3D6A"></path></svg></span></div></div>
+									<div class="payment-name">
+										<label for="" class="r_payment">Name on card</label>
+										<input class="r_field r_payfield r_name-get" id="name" type="text" placeholder="Jane Smith">
+									</div>
+									<div class="payment-card-number">
+										<label for="" class="r_payment">Card number	</label>
+									<input class="r_field r_payfield r_name-get" id="name" type="text" placeholder="1234 1234 1234 1234">
+									</div>
+									<div class="payment-50  r_d-flex">
+										<div class="payment-exp">
+											<label for="" class="r_payment">Expiry date	</label>
+										<input class="r_field r_payfield r_name-get" id="name" type="text" placeholder="MM / YY">
+										</div>
+										<div class="payment-cvc">
+										<label for="" class="r_payment">
+											Security code
+										</label> 
+										<input class="r_field r_payfield r_name-get" id="name" type="text" placeholder="CVC">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<!-- <button type="button" class="r_btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+									<button type="button" class="r_btn r_step-1-btn" id="nextBtn" onclick="$.fn.pagepiling.moveSectionDown();">Submit</button>
+								</div>
+							</form>
+						</div>
+					</form>
+				</div>
+	    	</div>
+	    </div>
+	</div>
+
+	<script>
+
+		$('.r_step-1-btn').click(function (e) { 
+			// e.preventDefault();
+			var name = $(".r_name-get").val();
+			$('.r_name-post').html(name);
+		});
+        function searchKeyPress(e)
+{
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+        $('#nextBtn').click();
+        return false;
+    }
+    return true;
+}
+    </script>
+	<script>
+		var input = document.querySelector("#phone");
+		window.intlTelInput(input, {
+			separateDialCode: true,
+			excludeCountries: ["in", "il"],
+			preferredCountries: ["ru", "jp", "pk", "no"]
+		});
+	</script>
+	<script>
+		/*
+===============================================================
+
+Hi! Welcome to my little playground!
+
+My name is Tobias Bogliolo. 'Open source' by default and always 'responsive',
+I'm a publicist, visual designer and frontend developer based in Barcelona. 
+
+Here you will find some of my personal experiments. Sometimes usefull,
+sometimes simply for fun. You are free to use them for whatever you want 
+but I would appreciate an attribution from my work. I hope you enjoy it.
+
+===============================================================
+*/
+//Global:
+var survey = []; //Bidimensional array: [ [1,3], [2,4] ]
+
+//Switcher function:
+$(".rb-tab").click(function(){
+  //Spot switcher:
+  $(this).parent().find(".rb-tab").removeClass("rb-tab-active");
+  $(this).addClass("rb-tab-active");
+});
+
+//Save data:
+$(".trigger").click(function(){
+  //Empty array:
+  survey = [];
+  //Push data:
+  for (i=1; i<=$(".rb").length; i++) {
+    var rb = "rb" + i;
+    var rbValue = parseInt($("#rb-"+i).find(".rb-tab-active").attr("data-value"));
+    //Bidimensional array push:
+    survey.push([i, rbValue]); //Bidimensional array: [ [1,3], [2,4] ]
+  };
+  //Debug:
+  debug();
+});
+
+//Debug:
+function debug(){
+  var debug = "";
+  for (i=0; i<survey.length; i++) {
+    debug += "Nº " + survey[i][0] + " = " + survey[i][1] + "\n";
+  };
+  alert(debug);
+};
+	</script>
+	<script>
+		/*checkboxes*/
+		$('.rb-tab-checkbox').click(function(e) {
+    e.preventDefault();            
+    $(this).toggleClass('rb-tab-active-checkbox');
+});
+ 
+	</script>
+
+
+
+	<script>
+	/*NEXT PREVIOUS BTNS*/
+	function previous() {
+            var curr = $("div.pp-section.active");
+            var prev = curr.prev(".pp-section");
+            curr.removeClass("active");
+            prev.addClass("active");
+        }
+
+	function next() {
+            var curr = $("div.pp-section.active");
+            var next = curr.next(".pp-section");
+            curr.removeClass("active");
+            next.addClass("active");
+        }
+	</script>
+
+
+<script>
+
+	$('.r_step-1-btn').click(function (e) { 
+		// e.preventDefault();
+		var name = $(".r_name-get").val();
+		$('.r_name-post').html(name);
+	});
+	function searchKeyPress(e)
+{
+// look for window.event in case event isn't passed in
+e = e || window.event;
+if (e.keyCode == 13)
+{
+	$('#nextBtn').click();
+	return false;
+}
+return true;
+}
+
+/*calculate*/
+$('.calc-quantity').keyup(function() {
+    var quantity = parseFloat($(this).val());
+    
+    $('#calc-price').text((quantity * 55 )); 
+});
+
+</script>
+
+<script>
+	var x, i, j, l, ll, selElmnt, a, b, c;
+	/*look for any elements with the class "custom-select":*/
+	x = document.getElementsByClassName("custom-select");
+	l = x.length;
+	for (i = 0; i < l; i++) {
+	  selElmnt = x[i].getElementsByTagName("select")[0];
+	  ll = selElmnt.length;
+	  /*for each element, create a new DIV that will act as the selected item:*/
+	  a = document.createElement("DIV");
+	  a.setAttribute("class", "select-selected");
+	  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+	  x[i].appendChild(a);
+	  /*for each element, create a new DIV that will contain the option list:*/
+	  b = document.createElement("DIV");
+	  b.setAttribute("class", "select-items select-hide");
+	  for (j = 1; j < ll; j++) {
+		/*for each option in the original select element,
+		create a new DIV that will act as an option item:*/
+		c = document.createElement("DIV");
+		c.innerHTML = selElmnt.options[j].innerHTML;
+		c.addEventListener("click", function(e) {
+			/*when an item is clicked, update the original select box,
+			and the selected item:*/
+			var y, i, k, s, h, sl, yl;
+			s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+			sl = s.length;
+			h = this.parentNode.previousSibling;
+			for (i = 0; i < sl; i++) {
+			  if (s.options[i].innerHTML == this.innerHTML) {
+				s.selectedIndex = i;
+				h.innerHTML = this.innerHTML;
+				y = this.parentNode.getElementsByClassName("same-as-selected");
+				yl = y.length;
+				for (k = 0; k < yl; k++) {
+				  y[k].removeAttribute("class");
+				}
+				this.setAttribute("class", "same-as-selected");
+				break;
+			  }
+			}
+			h.click();
+		});
+		b.appendChild(c);
+	  }
+	  x[i].appendChild(b);
+	  a.addEventListener("click", function(e) {
+		  /*when the select box is clicked, close any other select boxes,
+		  and open/close the current select box:*/
+		  e.stopPropagation();
+		  closeAllSelect(this);
+		  this.nextSibling.classList.toggle("select-hide");
+		  this.classList.toggle("select-arrow-active");
+		});
+	}
+	function closeAllSelect(elmnt) {
+	  /*a function that will close all select boxes in the document,
+	  except the current select box:*/
+	  var x, y, i, xl, yl, arrNo = [];
+	  x = document.getElementsByClassName("select-items");
+	  y = document.getElementsByClassName("select-selected");
+	  xl = x.length;
+	  yl = y.length;
+	  for (i = 0; i < yl; i++) {
+		if (elmnt == y[i]) {
+		  arrNo.push(i)
+		} else {
+		  y[i].classList.remove("select-arrow-active");
+		}
+	  }
+	  for (i = 0; i < xl; i++) {
+		if (arrNo.indexOf(i)) {
+		  x[i].classList.add("select-hide");
+		}
+	  }
+	}
+	/*if the user clicks anywhere outside the select box,
+	then close all select boxes:*/
+	document.addEventListener("click", closeAllSelect);
+	</script>
+
+</body>
+</html>

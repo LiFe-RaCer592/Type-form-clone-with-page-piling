@@ -1,0 +1,180 @@
+@media only  screen and (max-width:1440px){
+	input {
+		font-size: 14px;
+	}
+	
+	  button {
+		font-size: 14px;
+	}
+	
+	.r_label{
+		font-size: 18px;
+	}
+	input[type=text], .r_dropdown, input[type=email], .select-selected{
+		font-size: 20px;
+	  }
+	 #r_sub-heading{
+		font-size: 14px;
+	}
+	.r_font-20{
+		font-size: 16px;
+	}
+	  .rb-txt {
+		font-size: 16px;
+	}
+	.r_payfield{
+		 font-size: 14px!important;
+	}
+	.r_payment{
+		font-size: 13px;
+	}
+	.rb-txt-checkbox {
+		font-size: 14px;
+	}
+	  .payment-form {
+		padding: 10px;
+	}
+	.quantity-form{
+		padding: 10px 10px 0 10px;
+	}
+	.r_mt-20 {
+		margin-top: 5px !important;
+	}
+	input {
+		padding: 5px;
+	}
+	.r_btn {
+		margin-left: 30px;
+	}
+	input[type=text], .r_dropdown, input[type=email]{
+		margin-left: 30px;
+	}	
+	.custom-select{
+		margin-left: 20px;
+	}
+	.rb-tab, .rb-tab-checkbox {
+		padding: 10px 0px;
+	}
+	.rb-spot, .rb-spot-checkbox {
+		left: 3%;
+	}
+	#r_sub-heading {
+		margin-left: 30px;
+	}
+	.r_country-drop-down {
+		margin-left: 30px;
+	}
+	.rb, .rb-checkbox{
+		margin-left: 30px;
+	}
+}
+@media  only screen and (max-width:1024px){
+	#regForm {
+		padding: 20px;
+		width: 75%;
+	}
+	#menu {
+		left: 85%;
+	}	
+}
+@media  only screen and (max-width:768px){
+	#regForm {
+		padding: 10px;
+		width: 100%;
+	}
+}
+@media only  screen and (max-width:430px){
+	#regForm {
+		padding: 0px;
+	}
+	.rb-spot, .rb-spot-checkbox {
+	    left: 6%;
+	}
+	.select-selected:after {
+		top: 15px;}
+	#menu {
+		left: 75%;}
+	input {
+		font-size: 20px;}
+	
+	  button {
+		font-size: 16px;}
+	
+	.r_label{
+		font-size: 18px!important;
+	  }
+	input[type=text], .r_dropdown, input[type=email]{
+		font-size: 16px!important;
+	  }
+	 #r_sub-heading{
+		font-size: 20px!important;
+	  }
+	.r_font-20{
+		font-size: 20px!important;
+	}
+	  .rb-txt {
+		font-size: 20px!important;
+	  }
+	.r_payfield{
+		 font-size: 16px!important;
+	}
+	.r_payment{
+		font-size: 15px!important;
+	}
+	.rb-txt-checkbox {
+		font-size: 20px!important;
+	  }
+	  #regForm {
+		padding: 0px;
+		width: 100%!important;
+	}
+	.container.r_container  {
+		max-width: 100%!important;
+	}
+	.r_field{
+		width: 90%;
+	}
+	#r_sub-heading {
+		font-size: 16px!important;
+	}
+	#regForm {
+		width: 100%;
+	}
+	#r_sub-heading {
+		margin-left: 5px;
+	}
+	.payment-form {
+		width: 95%;
+}
+.Distribute-sc-__sc-5km20m-0.bswDlK {
+    background-color: #fff;
+    width: 60%;
+}
+.rb, .rb-checkbox {
+    margin-left: 5px;
+}
+input[type=text], .r_dropdown, input[type=email] {
+    margin-left: 5px;}
+	.select-items {
+    font-size: 16px!important;
+}
+
+.r_btn {
+    margin-left: 5px;
+}
+.custom-select {
+    margin-left: 5px;
+}
+.r_country-drop-down {
+    margin-left: 5px;
+}
+input[type=text], .r_dropdown, input[type=email], .select-selected {
+    font-size: 16px;
+}
+.select-items {
+    font-size: 16px!important;
+}
+.container {
+    padding-right: 5px;
+    padding-left: 5px;}
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="section-2">
+        <div class="r_container">
+            <table class="rwd-table">
+                <tbody>
+                  <tr>
+                    <th colspan="5">Basic Information</th>
+                  </tr>
+                  <tr>
+                    <td data-th="Name" colspan="2">
+                      <span class="r_d-noner"><b>Name</b></span><br><br>
+                      ALI
+                    </td>
+                    <td data-th="Phone" colspan="1">
+                      <span class="r_d-noner"><b>Phone</b></span><br><br>
+                      Khan
+                    </td>
+                    <td data-th="Email" colspan="1">
+                      <span class="r_d-noner"><b>Email</b></span><br><br>
+                      Khan
+                    </td>
+                    <td data-th="Address" colspan="1">
+                      <span class="r_d-noner"><b>Address</b></span><br><br>
+                      Khan
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-th="Add ons" colspan="2">
+                      <span class="r_d-noner"><b>Add ons</b></span><br><br>
+                      BC124578
+                    </td>
+                    <td data-th="Vehicle number">
+                      <span class="r_d-noner"><b>Vehicle number</b></span><br><br>
+                      Khan@example.com
+                    </td>
+                    
+                    <td data-th="Quantity">
+                      <span class="r_d-noner"><b>Quantity</b></span><br><br>
+                      0300457812
+                    </td>
+                    <td data-th="Package Type" colspan="1">
+                      <span class="r_d-noner"><b>Package Type</b></span><br><br>
+                      Khan
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="5" data-th="Referral Code">
+                      <span class="r_d-noner"><b>Referral Code</b></span><br><br>
+                        Lorem Ipsem
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </section>
+
+
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+        </script>
+</body>
+</html>
