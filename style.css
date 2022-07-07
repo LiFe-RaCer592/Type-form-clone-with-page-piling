@@ -295,6 +295,7 @@
 .dropbtn {
   padding: 6px 10px;}
 }
+
 @media (max-width:430px){
     .container{
         width: 90%;
@@ -325,4 +326,10 @@
       background-color: unset;
   }
     
+    }
+ 
+    @media (max-width: 414px){
+      .r_h-100 {
+          height: 100vh!important;
+      }
     }
